@@ -9,7 +9,7 @@
 	<script src="http://code.jquery.com/jquery-1.6.2.min.js"></script>
 </head>
 <body>
-	<div class="input-append btn-group">
+	<div class="input-append btn-group fuckoff">
 	    <button class="btn btn-success" data-action="drone" data-param="takeoff"><i class="icon-play icon-white"></i> takeoff</button>
 	    <button class="btn btn-warning" data-action="drone" data-param="land"><i class="icon-stop icon-white"></i> land</button>
 	    <button class="btn btn-danger" data-action="drone" data-param="disableEmergency"><i class="icon-wrench icon-white"></i> recover</button>            
@@ -32,7 +32,7 @@
                 <button class="btn" data-action="move" data-param="right"><i class="icon-arrow-right"></i> Right</button>
             </div>
         </div>
-        <div class="btn-toolbar">
+        <div class="btn-toolbar fuckoff">
             <div class="btn-group">
                 <button class="btn" data-action="move" data-param="up"><i class="icon-chevron-up"></i> Up</button>
                 <button class="btn" class="btn" data-action="move" data-param="down"><i class="icon-chevron-down"></i> Down</button>
@@ -61,16 +61,7 @@
 <div data-role="page" id = "intropage">
 <div id="sphere"></div>
 <div id="content">
-
-<ul>
-<li>acceleration x: <span id="accelerationX"></span>g</li>
-<li>acceleration y: <span id="accelerationY"></span>g</li>
-<li>acceleration z: <span id="accelerationZ"></span>g</li>
-<li>rotation alpha: <span id="rotationAlpha"></span>degree</li>
-<li>rotation beta: <span id="rotationBeta"></span>degree</li>
-<li>rotation gamma: <span id="rotationGamma"></span>degree</li>
-</ul>
-test: <span id="test"></span>
+<h1 id="simon">SIMON</h1>
 </div>
 <script type="text/javascript">var x=0,y=0,vx=0,vy=0,ax=0,ay=0;var sphere=document.getElementById("sphere");if(window.DeviceMotionEvent!=undefined){window.ondevicemotion=function(e){ax=event.accelerationIncludingGravity.x*5;ay=event.accelerationIncludingGravity.y*5;document.getElementById("accelerationX").innerHTML=e.accelerationIncludingGravity.x;document.getElementById("accelerationY").innerHTML=e.accelerationIncludingGravity.y;document.getElementById("accelerationZ").innerHTML=e.accelerationIncludingGravity.z;if(e.rotationRate){document.getElementById("rotationAlpha").innerHTML=e.rotationRate.alpha;document.getElementById("rotationBeta").innerHTML=e.rotationRate.beta;document.getElementById("rotationGamma").innerHTML=e.rotationRate.gamma;}}
 setInterval(function(){var landscapeOrientation=window.innerWidth/window.innerHeight>1;if(landscapeOrientation){vx=vx+ay;vy=vy+ax;}else{vy=vy-ay;vx=vx+ax;}

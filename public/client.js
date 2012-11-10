@@ -139,4 +139,12 @@
     });
   });
   $("*[rel=tooltip]").tooltip();
+  
+  $(document).ready(function() {
+  	if(window.ondevicemotion) {
+  	  $('.help').hide();
+  	} else {
+  	  $('.middle, #sphere').hide();
+  	}
+  });
 }).call(this);
