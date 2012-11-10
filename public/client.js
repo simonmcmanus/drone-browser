@@ -187,12 +187,12 @@ sphere.style.top=y+"px";
 
 
 sphere.style.left=x+"px";
-   this.oldx= x;
-   this.oldy = y;
 
 
    var xdiff = this.oldx - x;
    var ydiff = this.oldy -y;
+$('h1').html(xdiff+',  '+ydiff);
+
    if(xdiff < ydiff) { // is it more left or forward?
       if(x < 160) {
         $('h1').html('back'+this.oldx);
@@ -224,6 +224,8 @@ sphere.style.left=x+"px";
    }
 
   
+   this.oldx= x;
+   this.oldy = y;
 
 
 
