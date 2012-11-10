@@ -191,9 +191,27 @@ sphere.style.left=x+"px";
    this.oldy = y;
 
 
-  
+   var xdiff = this.oldx - x;
+   var ydiff = this.oldy -y;
+   if(xdiff > ydiff) { // is it more left or forward?
+      if(x < 160) {
+        $('h1').html('back'+this.oldx);
+        faye.publish("/drone/move", {
+            action: 'left',
+            speed: 0.3,
+            duration: 2000
+          }
+        );
+      }
 
-  if(y > 145) {
+      if(x > 160) {
+          $('h1').html('forward'+this.oldy);
+       }
+
+
+
+   }else {
+      if(y > 145) {
     $('h1').html('right'+this.oldy);
   }
 
@@ -201,19 +219,11 @@ sphere.style.left=x+"px";
     $('h1').html('left'+this.oldy);
   }
 
-  if(x < 160) {
-    $('h1').html('back'+this.oldx);
-    faye.publish("/drone/move", {
-        action: 'left',
-        speed: 0.3,
-        duration: 2000
-      }
-    );
-  }
 
-  if(x > 160) {
-      $('h1').html('forward'+this.oldy);
+
    }
+
+  
 
 
 
