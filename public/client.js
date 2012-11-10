@@ -27,45 +27,55 @@
     });
   });
   keymap = {
+    87: {
+      ev: 'move',
+      action: 'front',
+      duration: 15
+    },
+    83: {
+      ev: 'move',
+      action: 'back',
+      duration: 15
+    },
+    65: {
+      ev: 'move',
+      action: 'left',
+      duration: 15
+    },
+    68: {
+      ev: 'move',
+      action: 'right',
+      duration: 15
+    },
     38: {
       ev: 'move',
-      action: 'front'
+      action: 'up',
+      duration: 15
     },
     40: {
       ev: 'move',
-      action: 'back'
+      action: 'down',
+      duration: 15
     },
     37: {
       ev: 'move',
-      action: 'left'
+      action: 'counterClockwise',
+      duration: 15
     },
     39: {
       ev: 'move',
-      action: 'right'
-    },
-    16: {
-      ev: 'move',
-      action: 'up'
-    },
-    191: {
-      ev: 'move',
-      action: 'down'
-    },
-    220: {
-      ev: 'move',
-      action: 'counterClockwise'
-    },
-    222: {
-      ev: 'move',
-      action: 'clockwise'
+      action: 'clockwise',
+      duration: 15
     },
     32: {
       ev: 'drone',
-      action: 'takeoff'
+      action: 'takeoff',
+      duration: 15
     },
     27: {
       ev: 'drone',
-      action: 'land'
+      action: 'land',
+      duration: 15
     },
     49: {
       ev: 'animate',
@@ -117,7 +127,7 @@
     return faye.publish("/drone/" + evData.ev, {
       action: evData.action,
       speed: faye.speed,
-      duration: evData.duration
+      duration: 1 // evData.duration || 500
     });
   });
   $(document).keyup(function(ev) {
@@ -132,12 +142,12 @@
     console.log("/drone/" + $(this).attr("data-action"), {
       action: $(this).attr("data-param"),
       speed: 0.3,
-      duration: 1000 * parseInt($("#duration").val())
+      duration: 500
     });
     return faye.publish("/drone/" + $(this).attr("data-action"), {
       action: $(this).attr("data-param"),
       speed: 0.3,
-      duration: 1000 * parseInt($("#duration").val())
+      duration: 500
     });
   });
   $("*[data-action]").on("mouseup", function(ev) {
@@ -202,7 +212,7 @@ $('h1').html(xdiff+',  '+ydiff);
         faye.publish("/drone/move", {
             action: 'back',
             speed: 1,
-            duration: 1000
+            duration: 19.5
           }
         );
       }
@@ -213,7 +223,7 @@ $('h1').html(xdiff+',  '+ydiff);
           faye.publish("/drone/move", {
             action: 'forward',
             speed: 1,
-            duration: 1000
+            duration: 19.5
           }
         );
        }
@@ -228,7 +238,7 @@ $('h1').html(xdiff+',  '+ydiff);
           faye.publish("/drone/move", {
             action: 'left',
             speed: 1,
-            duration: 1000
+            duration: 19.5
           }
         );
   }
@@ -240,7 +250,7 @@ $('h1').html(xdiff+',  '+ydiff);
           faye.publish("/drone/move", {
             action: 'right',
             speed: 0.3,
-            duration: 1000
+            duration: 19.5
           }
         );
   }
