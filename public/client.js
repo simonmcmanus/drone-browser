@@ -151,7 +151,7 @@
 //  ball stuff = 
 //  
 $(document).ready(function() {
-	if(window.ondevicemotion) {
+	if(navigator.userAgent.toLowerCase().indexOf('iphone') !== -1) {
 	  $('.help').hide();
 	} else {
 	  $('.middle, #sphere').hide();
