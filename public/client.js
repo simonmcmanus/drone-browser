@@ -27,35 +27,35 @@
     });
   });
   keymap = {
-    87: {
+    38: {
       ev: 'move',
       action: 'front'
     },
-    83: {
+    40: {
       ev: 'move',
       action: 'back'
     },
-    65: {
+    37: {
       ev: 'move',
       action: 'left'
     },
-    68: {
+    39: {
       ev: 'move',
       action: 'right'
     },
-    38: {
+    16: {
       ev: 'move',
       action: 'up'
     },
-    40: {
+    191: {
       ev: 'move',
       action: 'down'
     },
-    37: {
+    220: {
       ev: 'move',
       action: 'counterClockwise'
     },
-    39: {
+    222: {
       ev: 'move',
       action: 'clockwise'
     },
