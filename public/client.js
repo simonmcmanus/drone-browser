@@ -190,25 +190,32 @@ sphere.style.top=y+"px";
 
 
 sphere.style.left=x+"px";
-   this.oldx= x;
-   this.oldy = y;
 
 
    var xdiff = this.oldx - x;
    var ydiff = this.oldy -y;
-   if(xdiff > ydiff) { // is it more left or forward?
+$('h1').html(xdiff+',  '+ydiff);
+
+   if(xdiff < ydiff) { // is it more left or forward?
       if(x < 160) {
         $('h1').html('back'+this.oldx);
         faye.publish("/drone/move", {
-            action: 'left',
-            speed: 0.3,
-            duration: 2000
+            action: 'back',
+            speed: 1,
+            duration: 1000
           }
         );
       }
 
       if(x > 160) {
           $('h1').html('forward'+this.oldy);
+
+          faye.publish("/drone/move", {
+            action: 'forward',
+            speed: 1,
+            duration: 1000
+          }
+        );
        }
 
 
@@ -216,10 +223,26 @@ sphere.style.left=x+"px";
    }else {
       if(y > 145) {
     $('h1').html('right'+this.oldy);
+
+
+          faye.publish("/drone/move", {
+            action: 'left',
+            speed: 1,
+            duration: 1000
+          }
+        );
   }
 
   if(y < 145) {
     $('h1').html('left'+this.oldy);
+
+
+          faye.publish("/drone/move", {
+            action: 'right',
+            speed: 0.3,
+            duration: 1000
+          }
+        );
   }
 
 
@@ -227,6 +250,8 @@ sphere.style.left=x+"px";
    }
 
   
+   this.oldx= x;
+   this.oldy = y;
 
 
 
