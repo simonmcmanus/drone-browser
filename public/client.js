@@ -111,9 +111,11 @@
     
     $('[data-param="' + evData.action + '"]').addClass('visible').siblings().removeClass('visible');
     
+    console.log(evData);
+    
     return faye.publish("/drone/" + evData.ev, {
       action: evData.action,
-      speed: sfaye.peed,
+      speed: faye.speed,
       duration: evData.duration
     });
   });
