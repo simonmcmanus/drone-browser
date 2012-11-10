@@ -107,6 +107,7 @@
     
     speed = speed >= 1 ? 1 : speed + 0.08 / (1 - speed);
     evData = keymap[ev.keyCode];
+    console.log(evData);
     $('.help').fadeOut(150);
     
     $('[data-param="' + evData.action + '"]').addClass('visible').siblings().removeClass('visible');
