@@ -187,7 +187,7 @@ sphere.style.left=x+"px";
 
    var xdiff = this.oldx - x;
    var ydiff = this.oldy -y;
-   if(xdiff > ydiff) { // is it more left or forward?
+   if(xdiff < ydiff) { // is it more left or forward?
       if(x < 160) {
         $('h1').html('back'+this.oldx);
         faye.publish("/drone/move", {
