@@ -1,28 +1,122 @@
+* {
+	margin: 0;
+	padding: 0;
+	
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+body, html {
+	height: 100%;
+	overflow: hidden;
+}
+
 body {
-     font-family: sans-serif;
+	background: url('img/noise.png'), -webkit-linear-gradient(top, #11131c, #363c5a);
+	box-shadow: inset 0 10px 20px rgba(0,0,0,.2), inset 0 -20px 20px rgba(216,223,254,.05), inset 10px 0 30px rgba(0,0,0,.15), inset -10px 0 30px rgba(0,0,0,.15);
+	
+	font: 14px/24px Armata, sans-serif;
+	color: #fff;
+	text-shadow: 0 1px 2px rgba(0,0,0,.2);
 }
+
 #cam {
-    margin: 0 auto;
-    display: block;
-    border-radius: 5px;
-    border: 3px #050 solid;
-    width: 640px;
-    height: 360px;
+	display: none;
 }
+
+.status {
+	position: fixed;
+	left: 50%;
+	top: 25px;
+	
+	width: 15px;
+	height: 21px;
+	
+	background: url('img/not-connected.png') no-repeat 0 0;
+}
+	.status.success {
+		background-image: url('img/connected.png');
+	}
+	
+.arrows button {
+	display: block;
+	width: 25%;
+	height: 25%;
+	
+	position: absolute;
+	
+	background: #ced5ff;
+	color: #5766bc;
+	
+	border: none;
+	border-radius: 5px;
+	
+	box-shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.2), inset 0 -3px 5px rgba(0,0,0,.1);
+	
+	font: 300 21px "Helvetica Neue", sans-serif;
+	
+	opacity: 0;
+	-webkit-transition: opacity .15s;
+}
+	.arrows button.visible {
+		opacity: 1;
+		-webkit-transition-delay: 0;
+	}
+	.arrows button[data-param='left'], .arrows button[data-param='right'] {
+		bottom: 50px;
+	}
+		.arrows button[data-param='left'] {
+			left: 50px;
+		}
+		.arrows button[data-param='right'] {
+			right: 50px;
+		}
+	.arrows button[data-param='front'], .arrows button[data-param='back'] {
+		left: 37.5%;
+		bottom: 50%;
+	}
+		.arrows button[data-param='back'] {
+			bottom: 50px;
+		}
+	
+.help {
+	font-size: 17px;
+	font-weight: 300;
+	text-align: center;
+	line-height: 100px;
+	text-shadow: 0 1px 3px rgba(0,0,0,.5);
+	
+	position: absolute;
+	left: 10%;
+	top: 50%;
+	z-index: 1000;
+	
+	display: block;
+	width: 80%;
+	height: 100px;
+	
+	margin-top: -50px;
+}
+	
+
 #batteryProgress {
-	width: 640px;
-	margin: 0 auto;
-	margin-bottom: 10px;
+	position: fixed;
+	right: 30px;
+	top: 30px;
+	
+	width: 22px;
+	height: 15px;
+	
+	padding: 4px 6px 4px 4px;
+	
+	background: url('img/battery.png');
 }
-#stats {
-    position: absolute;
-    bottom: 20px; 
-    right: 20px;
-    font-size: 26px;
-}
-.buttons {
-    text-align: center;
-}
-.dropdown-menu {
-    text-align: left;
-}
+	#batteryProgress .bar {
+		display: block;
+		height: 6px;
+		
+		background: #9b9ead;
+		
+		box-shadow: inset 0 1px 0 rgba(255,255,255,.2), inset 0 0 1px rgba(255,255,255,.8), inset 0 -1px 1px rgba(0,0,0,.1), 0 1px 1px rgba(0,0,0,.2);
+	}

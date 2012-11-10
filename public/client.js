@@ -104,16 +104,22 @@
       return;
     }
     ev.preventDefault();
+    
     speed = speed >= 1 ? 1 : speed + 0.08 / (1 - speed);
     evData = keymap[ev.keyCode];
-    return publish("/drone/" + evData.ev, {
+    $('.help').fadeOut(150);
+    
+    $('[data-param="' + evData.action + '"]').addClass('visible').siblings().removeClass('visible');
+    
+    return faye.publish("/drone/" + evData.ev, {
       action: evData.action,
       speed: sfaye.peed,
       duration: evData.duration
     });
   });
   $(document).keyup(function(ev) {
-    speed = 0;
+    $('[data-param]').removeClass('visible');
+    
     return faye.publish("/drone/drone", {
       action: 'stop'
     });
@@ -175,15 +181,33 @@ sphere.style.top=y+"px";
 
 
 sphere.style.left=x+"px";
+   this.oldx= x;
+   this.oldy = y;
 
-$('h1').html(x);
 
-faye.publish("/drone/move", {
-    action: x,
-    speed: 0.3,
-    duration: 2000
+  
+
+  if(y > 145) {
+    $('h1').html('right'+this.oldy);
   }
-);
+
+  if(y < 145) {
+    $('h1').html('left'+this.oldy);
+  }
+
+  if(x < 160) {
+    $('h1').html('back'+this.oldx);
+    faye.publish("/drone/move", {
+        action: 'left',
+        speed: 0.3,
+        duration: 2000
+      }
+    );
+  }
+
+  if(x > 160) {
+      $('h1').html('forward'+this.oldy);
+   }
 
 
 
