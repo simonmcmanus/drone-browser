@@ -113,7 +113,7 @@
     
     return faye.publish("/drone/" + evData.ev, {
       action: evData.action,
-      speed: sfaye.peed,
+      speed: faye.speed,
       duration: evData.duration
     });
   });
@@ -197,15 +197,22 @@ $('h1').html(xdiff+',  '+ydiff);
       if(x < 160) {
         $('h1').html('back'+this.oldx);
         faye.publish("/drone/move", {
-            action: 'left',
-            speed: 0.3,
-            duration: 2000
+            action: 'back',
+            speed: 1,
+            duration: 1000
           }
         );
       }
 
       if(x > 160) {
           $('h1').html('forward'+this.oldy);
+
+          faye.publish("/drone/move", {
+            action: 'forward',
+            speed: 1,
+            duration: 1000
+          }
+        );
        }
 
 
@@ -213,10 +220,26 @@ $('h1').html(xdiff+',  '+ydiff);
    }else {
       if(y > 145) {
     $('h1').html('right'+this.oldy);
+
+
+          faye.publish("/drone/move", {
+            action: 'left',
+            speed: 1,
+            duration: 1000
+          }
+        );
   }
 
   if(y < 145) {
     $('h1').html('left'+this.oldy);
+
+
+          faye.publish("/drone/move", {
+            action: 'right',
+            speed: 0.3,
+            duration: 1000
+          }
+        );
   }
 
 
