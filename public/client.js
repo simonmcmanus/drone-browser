@@ -104,8 +104,14 @@
       return;
     }
     ev.preventDefault();
+    
     speed = speed >= 1 ? 1 : speed + 0.08 / (1 - speed);
     evData = keymap[ev.keyCode];
+    
+    $('.help').fadeOut(150);
+    
+    $('[data-param="' + evData.action + '"]').addClass('visible').siblings().removeClass('visible');
+    
     return faye.publish("/drone/" + evData.ev, {
       action: evData.action,
       speed: speed,
@@ -113,7 +119,8 @@
     });
   });
   $(document).keyup(function(ev) {
-    speed = 0;
+    $('[data-param]').removeClass('visible');
+    
     return faye.publish("/drone/drone", {
       action: 'stop'
     });

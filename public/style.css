@@ -38,6 +38,67 @@ body {
 	.status.success {
 		background-image: url('img/connected.png');
 	}
+	
+.arrows button {
+	display: block;
+	width: 25%;
+	height: 25%;
+	
+	position: absolute;
+	
+	background: #ced5ff;
+	color: #5766bc;
+	
+	border: none;
+	border-radius: 5px;
+	
+	box-shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.2), inset 0 -3px 5px rgba(0,0,0,.1);
+	
+	font: 300 21px "Helvetica Neue", sans-serif;
+	
+	opacity: 0;
+	-webkit-transition: opacity .15s;
+}
+	.arrows button.visible {
+		opacity: 1;
+		-webkit-transition-delay: 0;
+	}
+	.arrows button[data-param='left'], .arrows button[data-param='right'] {
+		bottom: 50px;
+	}
+		.arrows button[data-param='left'] {
+			left: 50px;
+		}
+		.arrows button[data-param='right'] {
+			right: 50px;
+		}
+	.arrows button[data-param='front'], .arrows button[data-param='back'] {
+		left: 37.5%;
+		bottom: 50%;
+	}
+		.arrows button[data-param='back'] {
+			bottom: 50px;
+		}
+	
+.help {
+	font-size: 17px;
+	font-weight: 300;
+	text-align: center;
+	line-height: 100px;
+	text-shadow: 0 1px 3px rgba(0,0,0,.5);
+	
+	position: absolute;
+	left: 10%;
+	top: 50%;
+	z-index: 1000;
+	
+	display: block;
+	width: 80%;
+	height: 100px;
+	
+	margin-top: -50px;
+}
+	
 
 #batteryProgress {
 	position: fixed;
