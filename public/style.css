@@ -98,6 +98,14 @@ body {
 	
 	margin-top: -50px;
 }
+
+#sphere {
+	position: absolute;
+	width: 34px;
+	height: 40px;
+	
+	background: url('img/ball.png');
+}
 	
 
 #batteryProgress {
